@@ -1,38 +1,24 @@
-name: TikTok Streak
+name: Mestre do Desconto - Verificacao Segura
 
 on:
   schedule:
-    - cron: "0 15 * * *"
-    - cron: "0 17 * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
-jobs:
-  streak:
-    runs-on: windows-latest
+permissions:
+  contents: read
 
+concurrency:
+  group: mestre-desconto-verificacao
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - run: npm install
-
-      - name: Run TikTok Streak
-        env:
-          COOKIES_JSON: ${{ secrets.COOKIES_JSON }}
-        run: node index.js
-
-      - name: Discord Notification
-        if: always()
-        uses: tsickert/discord-webhook@v7.0.0
-        with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          username: TikTok Streak
-          content: |
-            **TikTok Streak**
-            Status: `${{ job.status }}`
-            Repository: `${{ github.repository }}`
-            Trigger: `${{ github.event_name }}`
-            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      - name: Validar configuracao sem enviar mensagens
+        run: node safe-check.js
