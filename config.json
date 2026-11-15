@@ -1,14 +1,15 @@
+
 {
-  "message": "API",
-  "useQuotesAPi": true,
-  "totalUsers": 14,
+  "message": "🚨 NÃO PERCA AS MELHORES OFERTAS! 🔥\n\n💸 Cupons e promoções do Mercado Livre podem acabar a qualquer momento!\n\n⚡ ENTRE AGORA GRÁTIS no nosso canal e receba os melhores achadinhos direto no WhatsApp! 👇\n\nhttps://mestredodesconto.com.br/canal",
+  "useQuotesAPi": false,
+  "totalUsers": 1,
   "actionDelayMs": 300,
   "typeDelayMs": 0,
   "afterSendDelayMs": 500,
   "afterClickDelayMs": 300,
   "pageLoadDelayMs": 5000,
   "finishDelayMs": 3000,
-  "headless": false,
+  "headless": true,
   "bannerFont": "DOS Rebel",
-  "targetUrl": "https://www.tiktok.com/business-suite/messages?lang=en&from=homepage"
+  "targetUrl": "https://www.tiktok.com/business-suite/messages?lang=br&from=homepage"
 }
